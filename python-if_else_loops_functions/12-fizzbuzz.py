@@ -13,7 +13,3 @@ def fizzbuzz():
             sentence += str(i) + " "
 
     print(sentence)
-
-
-fizzbuzz()
-print("")
