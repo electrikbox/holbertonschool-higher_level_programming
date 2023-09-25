@@ -8,8 +8,8 @@ if __name__ == "__main__":
     if num_arguments == 0:
         print("0 arguments.")
     else:
-        arg_word = 's' if num_arguments > 1 else ''
-        print("{} argument{}:".format(num_arguments, arg_word))
+        arg_word_end = 's' if num_arguments > 1 else ''
+        print("{} argument{}:".format(num_arguments, arg_word_end))
 
     for i, arg in enumerate(arguments, 1):
         print("{}: {}".format(i, arg))
