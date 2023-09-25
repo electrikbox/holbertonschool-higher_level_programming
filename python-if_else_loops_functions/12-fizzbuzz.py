@@ -12,4 +12,4 @@ def fizzbuzz():
         else:
             sentence += str(i) + " "
 
-    print(sentence)
+    print(sentence, end="")
