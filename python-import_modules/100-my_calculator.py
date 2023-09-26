@@ -17,7 +17,7 @@ if __name__ == "__main__":
         "-": sub,
         "*": mul,
         "/": div
-        }
+    }
 
     if operator not in func:
         print("Unknown operator. Available operators: +, -, * and /")
