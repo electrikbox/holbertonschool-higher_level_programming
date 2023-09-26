@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 
-def remove_char_at(str, n):
+def remove_char_at(phrase, n):
     sentence = ""
-    for i in range(len(str)):
+    for i in range(len(phrase)):
         if i != n:
-            sentence += str[i]
+            sentence += phrase[i]
     return sentence
