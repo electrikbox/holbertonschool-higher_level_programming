@@ -8,9 +8,11 @@ Function that adds 2 integers.
 
 def add_integer(a, b=98):
     """
-    a (int): first value
-    b (int, optional): second value. Defaults to 98.
-    Returns: sum a + b
+    Args:
+        a (int): first value
+        b (int, optional): second value. Defaults to 98.
+    Returns:
+        sum (int) a + b
     """
 
     if not isinstance(a, (int, float)):
