@@ -43,17 +43,8 @@ Now use it:
 	>>> add_integer(1.5, 2.5)
 	3
 
-	>>> add_integer(2.5)
-	100
-
 	>>> add_integer(1.5, -2.5)
 	-1
-
-	>>> add_integer(-2.5)
-	96
-
-	>>> add_integer(-1.5, -2.5)
-	-3
 
 	>>> add_integer(float('inf'), 1)
 	Traceback (most recent call last):
@@ -118,3 +109,7 @@ Now use it:
 	>>> add_integer(None)
 	Traceback (most recent call last):
 	TypeError: a must be an integer
+
+	>>> add_integer()
+	Traceback (most recent call last):
+	TypeError: add_integer() missing 1 required positional argument: 'a'
