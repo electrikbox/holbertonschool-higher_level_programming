@@ -1,36 +1,4 @@
-"""
->>> add_integer(1, 2)
-3
-
->>> add_integer(100, -2)
-98
-
->>> add_integer(1.7, 2.5)
-3
-
->>> add_integer("r", 2)
-Traceback (most recent call last):
-TypeError: a must be an integer
-
->>> add_integer(-1, "f")
-Traceback (most recent call last):
-TypeError: b must be an integer
-
->>> add_integer(1, 2, 3)
-Traceback (most recent call last):
-TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
-
->>> add_integer(10)
-108
-
->>> add_integer()
-Traceback (most recent call last):
-TypeError: add_integer() missing 1 required positional argument: 'a'
-
->>> add_integer(1, float("test"))
-Traceback (most recent call last):
-ValueError: could not convert string to float: 'test'
-"""
+#!/usr/bin/python3
 
 def add_integer(a, b=98):
     """function to add 2 integer
@@ -50,15 +18,10 @@ def add_integer(a, b=98):
         a = int(a)
     else:
         raise TypeError("a must be an integer")
-    
+
     if isinstance(b, (int, float)):
         b = int(b)
     else:
         raise TypeError("b must be an integer")
-    
+
     return a + b
-
-
-# result = add_integer(1, float("test"))
-
-# print(result)
