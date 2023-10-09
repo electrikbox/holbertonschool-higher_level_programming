@@ -113,3 +113,7 @@ Now use it:
 	>>> add_integer()
 	Traceback (most recent call last):
 	TypeError: add_integer() missing 1 required positional argument: 'a'
+
+	>>> add_integer(a, 4)
+	Traceback (most recent call last):
+	NameError: name 'a' is not defined
