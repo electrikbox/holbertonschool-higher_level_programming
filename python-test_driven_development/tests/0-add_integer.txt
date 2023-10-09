@@ -1,50 +1,44 @@
-The "0-add_integer" module
+The 0-add_integer module
 ============================
 
-Import "add_integer"
------------------------------------------------------------------
+import add_integer
 
 	>>> add_integer = __import__('0-add_integer').add_integer
 
------------------------------------------------------------------
 
-Regular integers:
+tests:
 	>>> add_integer(1, 2)
 	3
 
-Positif and negatif integers:
 	>>> add_integer(100, -2)
 	98
 
-Regular float:
 	>>> add_integer(1.7, 2.5)
 	3
 
-Only 1 integer:
 	>>> add_integer(10)
 	108
 
-Str and integer:
+	>>> add_integer(float('inf'), float('inf'))
+	Traceback (most recent call last):
+	OverflowError: cannot convert float infinity to integer
+
 	>>> add_integer("r", 2)
 	Traceback (most recent call last):
 	TypeError: a must be an integer
 
-Negatif integer and str:
 	>>> add_integer(-1, "f")
 	Traceback (most recent call last):
 	TypeError: b must be an integer
 
-3 parameters:
 	>>> add_integer(1, 2, 3)
 	Traceback (most recent call last):
 	TypeError: add_integer() takes from 1 to 2 positional arguments but 3 were given
 
-No parameters:
 	>>> add_integer()
 	Traceback (most recent call last):
 	TypeError: add_integer() missing 1 required positional argument: 'a'
 
-Integer and float cast:
 	>>> add_integer(1, float("test"))
 	Traceback (most recent call last):
 	ValueError: could not convert string to float: 'test'

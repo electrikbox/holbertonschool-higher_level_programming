@@ -2,27 +2,24 @@
 """ Function that adds 2 integers. """
 
 def add_integer(a, b=98):
-    """
-    function to add 2 integer and return the result
+    """function to add 2 integer
 
-    Parameters:
-    a (int or float): first value to add
-    b (int or float): second value to add, default value is 98
-
-    Returns:
-    int: the sum of a and b
+    Args:
+        a (int): first value
+        b (int, optional): second value. Defaults to 98.
 
     Raises:
-    TypeError: if a or b is not an integer or float
+        TypeError: if a is not an int
+        TypeError: if b is not an int
+
+    Returns:
+        int: sum a + b
     """
-    if isinstance(a, (int, float)):
-        a = int(a)
-    else:
-        raise TypeError("a must be an integer")
 
-    if isinstance(b, (int, float)):
-        b = int(b)
-    else:
-        raise TypeError("b must be an integer")
-
-    return a + b
+    if not isinstance(a, (int, float)):
+        raise TypeError('a must be an integer')
+    
+    if not isinstance(b, (int, float)):
+        raise TypeError('b must be an integer')
+    
+    return int(a) + int(b)
