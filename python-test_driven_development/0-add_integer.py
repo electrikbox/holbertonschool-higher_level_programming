@@ -26,5 +26,3 @@ def add_integer(a, b=98):
         raise TypeError("b must be an integer")
 
     return a + b
-
-help(add_integer.__doc__)
