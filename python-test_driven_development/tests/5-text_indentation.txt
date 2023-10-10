@@ -1,0 +1,82 @@
+The ``text_indentation`` module
+==========================
+
+Using ``text_indentation``
+---------------------
+
+First import ``text_indentation`` from the ``text_indentation`` module:
+
+	>>> text_indentation = __import__('5-text_indentation').text_indentation
+
+Now use it:
+
+    >>> text_indentation("Hello?")
+    Hello?
+    <BLANKLINE>
+
+    >>> text_indentation("Hello? world.")
+    Hello?
+    <BLANKLINE>
+    world.
+    <BLANKLINE>
+
+    >>> text_indentation("Hello? world. school: test.")
+    Hello?
+    <BLANKLINE>
+    world.
+    <BLANKLINE>
+    school:
+    <BLANKLINE>
+    test.
+    <BLANKLINE>
+
+    >>> text_indentation("?????")
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+    ?
+    <BLANKLINE>
+
+    >>> text_indentation("Holberton.School:Best.School?")
+    Holberton.
+    <BLANKLINE>
+    School:
+    <BLANKLINE>
+    Best.
+    <BLANKLINE>
+    School?
+    <BLANKLINE>
+
+    >>> text_indentation(str(10 + 20) + "?" + str(10 - 20))
+    30?
+    <BLANKLINE>
+    -10
+
+    >>> text_indentation()
+    Traceback (most recent call last):
+    TypeError: text_indentation() missing 1 required positional argument: 'text'
+
+    >>> text_indentation(None)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation("Holberton.", "School?")
+    Traceback (most recent call last):
+    TypeError: text_indentation() takes 1 positional argument but 2 were given
+
+    >>> text_indentation(1)
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation([2, 3])
+    Traceback (most recent call last):
+    TypeError: text must be a string
+
+    >>> text_indentation(text)
+    Traceback (most recent call last):
+    NameError: name 'text' is not defined
