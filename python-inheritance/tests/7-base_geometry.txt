@@ -27,6 +27,14 @@ Now use it:
 ------------------------------------------------------------------------
 
     >>> try:
+    ...     bg.integer_validator("name")
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
+------------------------------------------------------------------------
+
+    >>> try:
     ...     bg.integer_validator(None, "John")
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
@@ -56,7 +64,7 @@ Now use it:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] name must be an integer
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
     >>> try:
     ...     bg.integer_validator("name", -1)
@@ -64,10 +72,26 @@ Now use it:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [ValueError] name must be greater than 0
 
-    ------------------------------------------------------------------------
+------------------------------------------------------------------------
 
     >>> try:
     ...     bg.area()
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [Exception] area() is not implemented
+
+------------------------------------------------------------------------
+
+    >>> try:
+    ...     bg.integer_validator("inf_float", 1e400)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] inf_float must be an integer
+
+------------------------------------------------------------------------
+
+    >>> try:
+    ...     bg.integer_validator("name", True)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
