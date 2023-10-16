@@ -101,3 +101,51 @@ Now use it:
     >>> bg.integer_validator("numbers", 0, 1)
     Traceback (most recent call last):
     TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
+
+
+
+    >>> try:
+    ...     bg.integer_validator("inf_float", 1e400)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] inf_float must be an integer
+
+
+
+    >>> try:
+    ...     bg.integer_validator("name", (4, ))
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+
+
+    >>> try:
+    ...     bg.integer_validator("name", [])
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+
+
+    >>> try:
+    ...     bg.integer_validator("name", {3, 4})
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+
+
+    >>> try:
+    ...     bg.integer_validator("name", object)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+
+
+    >>> try:
+    ...     bg.integer_validator("age", 0)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [ValueError] age must be greater than 0
