@@ -6,14 +6,12 @@ integer validator method
 
 class BaseGeometry:
     """
-    integer validator method
+     a glass to create geometry shape
     """
+
     def area(self):
         """
-        give area
-
-        Raises:
-            Exception: if function is not implemented
+        Raises Exception: if function is not implemented
         """
 
         raise Exception(f"{self.area.__name__}() is not implemented")
@@ -32,7 +30,7 @@ class BaseGeometry:
         """
 
         if type(value) is not int:
-            raise TypeError(f"{name} must be an integer")
+            raise TypeError(name + "must be an integer")
 
         if value <= 0:
-            raise ValueError(f"{name} must be greater than 0")
+            raise ValueError(name, "must be greater than 0")
