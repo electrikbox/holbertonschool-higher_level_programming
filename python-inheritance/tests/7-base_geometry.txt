@@ -1,14 +1,34 @@
-Base geometry integer validator
-==========================
+7. Integer validator module
+===============================
 
-	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+Import module:
+==============
+    >>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
 
-Now use it:
+
+Function:
+=========
+Write a class BaseGeometry (based on 6-base_geometry.py).
+
+    * You can assume name is always a string
+    * If value is not an integer: raises a TypeError exception
+    * If value is less or equal to 0: raises a ValueError exception
+
+
+Test case:
+==========
+
+Test good values:
+=================
 
 	>>> bg = BaseGeometry()
     >>> bg.integer_validator("my_int", 12)
+    >>> bg.integer_validator("age", 45)
 
 ------------------------------------------------------------------------
+
+Type Error case raised:
+=======================
 
     >>> try:
     ...     bg.integer_validator("name", "John")
@@ -16,31 +36,11 @@ Now use it:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] name must be an integer
 
-------------------------------------------------------------------------
-
-    >>> try:
-    ...     bg.integer_validator()
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
-
-------------------------------------------------------------------------
-
-    >>> try:
-    ...     bg.integer_validator("name")
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
-
-------------------------------------------------------------------------
-
     >>> try:
     ...     bg.integer_validator(None, "John")
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] unsupported operand type(s) for +: 'NoneType' and 'str'
-
-------------------------------------------------------------------------
 
     >>> try:
     ...     bg.integer_validator("name", float('inf'))
@@ -48,15 +48,11 @@ Now use it:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] name must be an integer
 
-------------------------------------------------------------------------
-
     >>> try:
     ...     bg.integer_validator("nan", float('nan'))
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] nan must be an integer
-
-------------------------------------------------------------------------
 
     >>> try:
     ...     bg.integer_validator("name", None)
@@ -64,31 +60,41 @@ Now use it:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] name must be an integer
 
-------------------------------------------------------------------------
-
-    >>> try:
-    ...     bg.integer_validator("name", -1)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [ValueError] name must be greater than 0
-
-------------------------------------------------------------------------
-
-    >>> try:
-    ...     bg.area()
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [Exception] area() is not implemented
-
-------------------------------------------------------------------------
-
     >>> try:
     ...     bg.integer_validator("inf_float", 1e400)
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [TypeError] inf_float must be an integer
 
-------------------------------------------------------------------------
+    >>> try:
+    ...     bg.integer_validator("name", (4, ))
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    >>> try:
+    ...     bg.integer_validator("name", [])
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    >>> try:
+    ...     bg.integer_validator("name", {3, 4})
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    >>> try:
+    ...     bg.integer_validator("name", object)
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
+
+    >>> try:
+    ...     bg.integer_validator("name", 'test')
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] name must be an integer
 
     >>> try:
     ...     bg.integer_validator("name", True)
@@ -98,54 +104,48 @@ Now use it:
 
 ------------------------------------------------------------------------
 
+Type Error case:
+================
+
+    >>> try:
+    ...     bg.integer_validator()
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] BaseGeometry.integer_validator() missing 2 required positional arguments: 'name' and 'value'
+
+    >>> try:
+    ...     bg.integer_validator("name")
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [TypeError] BaseGeometry.integer_validator() missing 1 required positional argument: 'value'
+
     >>> bg.integer_validator("numbers", 0, 1)
     Traceback (most recent call last):
     TypeError: BaseGeometry.integer_validator() takes 3 positional arguments but 4 were given
 
+------------------------------------------------------------------------
 
-
-    >>> try:
-    ...     bg.integer_validator("inf_float", 1e400)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] inf_float must be an integer
-
-
+Value Error case:
+=================
 
     >>> try:
-    ...     bg.integer_validator("name", (4, ))
+    ...     bg.integer_validator("name", -1)
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-
-
-    >>> try:
-    ...     bg.integer_validator("name", [])
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-
-
-    >>> try:
-    ...     bg.integer_validator("name", {3, 4})
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-
-
-    >>> try:
-    ...     bg.integer_validator("name", object)
-    ... except Exception as e:
-    ...     print("[{}] {}".format(e.__class__.__name__, e))
-    [TypeError] name must be an integer
-
-
+    [ValueError] name must be greater than 0
 
     >>> try:
     ...     bg.integer_validator("age", 0)
     ... except Exception as e:
     ...     print("[{}] {}".format(e.__class__.__name__, e))
     [ValueError] age must be greater than 0
+
+------------------------------------------------------------------------
+
+Exception Error case:
+
+    >>> try:
+    ...     bg.area()
+    ... except Exception as e:
+    ...     print("[{}] {}".format(e.__class__.__name__, e))
+    [Exception] area() is not implemented
