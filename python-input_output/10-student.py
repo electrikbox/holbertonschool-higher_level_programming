@@ -19,11 +19,11 @@ class Student:
     def to_json(self, attrs=None):
         """return Student dict
         Args:
-            attrs (list, optional): list of Student attributs. Defaults to None.
+            attrs (list, optional): Student attributs. Defaults to None.
         Returns:
             dict: Student dict
         """
         if attrs is None:
             return self.__dict__
         if all(isinstance(attr, str) for attr in attrs):
-            return {key: value for key, value in self.__dict__.items() if key in attrs}
+            return {k: v for k, v in self.__dict__.items() if k in attrs}
