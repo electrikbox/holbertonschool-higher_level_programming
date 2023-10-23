@@ -19,8 +19,6 @@ class TestRectangle(TestBase):
         self.assertEqual(rect.x, 5)
         self.assertEqual(rect.y, 5)
 
-    """ Testing invalid attributes """
-
     def test_invalid_width(self):
         with self.assertRaises(ValueError):
             Rectangle(0, 20, 5, 5)
@@ -54,6 +52,24 @@ class TestRectangle(TestBase):
         expected_output = "##\n##\n"
         with StringIO() as buf, redirect_stdout(buf):
             r.display()
+            output = buf.getvalue()
+            self.assertEqual(output, expected_output)
+
+    def test_display_with_xy(self):
+        """Test displaying a rectangle in stdout"""
+        r = Rectangle(2, 2, 5, 2)
+        expected_output = "\n\n     ##\n     ##\n"
+        with StringIO() as buf, redirect_stdout(buf):
+            r.display()
+            output = buf.getvalue()
+            self.assertEqual(output, expected_output)
+
+    def test_str(self):
+        """Test print rectangle representation in stdout"""
+        r = Rectangle(4, 5, 0, 0)
+        expected_output = "[Rectangle] (17) 0/0 - 4/5\n"
+        with StringIO() as buf, redirect_stdout(buf):
+            print(r)
             output = buf.getvalue()
             self.assertEqual(output, expected_output)
 
