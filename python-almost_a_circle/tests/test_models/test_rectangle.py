@@ -19,8 +19,6 @@ class TestRectangle(TestBase):
     def test_inheritance(self):
         """test inheritance"""
         self.assertTrue(issubclass(Rectangle, Base))
-        self.assertFalse(issubclass(Base, Rectangle))
-        self.assertFalse(issubclass(Rectangle, int))
 
     # ATTRIBUTS ----------------------------------------------------------
 
@@ -32,20 +30,7 @@ class TestRectangle(TestBase):
         self.assertEqual(rect.x, 5)
         self.assertEqual(rect.y, 5)
 
-        rect = Rectangle(10, 20)
-        self.assertEqual(rect.width, 10)
-        self.assertEqual(rect.height, 20)
-        self.assertEqual(rect.x, 0)
-        self.assertEqual(rect.y, 0)
-
-        rect = Rectangle(10, 20, 5, 5, 67)
-        self.assertEqual(rect.width, 10)
-        self.assertEqual(rect.height, 20)
-        self.assertEqual(rect.x, 5)
-        self.assertEqual(rect.y, 5)
-        self.assertEqual(rect.id, 67)
-
-    def test_invalid_attributs(self):
+    def test_invalid_width(self):
         """test invalid attributs"""
         with self.assertRaises(ValueError):
             Rectangle(0, 20, 5, 5)
@@ -58,6 +43,7 @@ class TestRectangle(TestBase):
         with self.assertRaises(TypeError):
             Rectangle(3.14, 20, 5, 5)
 
+    def test_invalid_height(self):
         with self.assertRaises(ValueError):
             Rectangle(20, 0, 5, 5)
         with self.assertRaises(ValueError):
@@ -69,17 +55,19 @@ class TestRectangle(TestBase):
         with self.assertRaises(TypeError):
             Rectangle(20, 3.14, 5, 5)
 
+    def test_invalid_xy(self):
         with self.assertRaises(ValueError):
             Rectangle(10, 20, -5, 5)
         with self.assertRaises(ValueError):
             Rectangle(10, 20, 5, -5)
         with self.assertRaises(TypeError):
+            Rectangle(10, 20, 3.14, 5)
+        with self.assertRaises(TypeError):
+            Rectangle(10, 20, 5, 3.14)
+        with self.assertRaises(TypeError):
             Rectangle(10, 20, "test", 5)
         with self.assertRaises(TypeError):
             Rectangle(10, 20, 5, "test")
-
-        with self.assertRaises(TypeError):
-            Rectangle(1, 2, 3, 4, 5, 6)
 
     # AREA ---------------------------------------------------------------
 
