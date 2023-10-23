@@ -95,8 +95,6 @@ class Rectangle(Base):
         Returns:
             str: rectangle representation
         """
-        name = self.__class__.__name__
-        pos = f"{self.x}/{self.y}"
-        size = f"{self.width}/{self.height}"
-
-        return f"{name} ({self.id}) {pos} - {size}"
+        return "[{}] ({}) {}/{} - {}/{}".format( self.__class__.__name__, \
+            self.id, self.x, self.y, self.__width, self.__height
+            )
