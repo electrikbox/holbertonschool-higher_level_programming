@@ -21,8 +21,7 @@ class TestRectangle(TestBase):
         self.assertTrue(issubclass(Rectangle, Base))
         self.assertFalse(issubclass(Base, Rectangle))
         self.assertFalse(issubclass(Rectangle, int))
-    
-    
+
     # ATTRIBUTS ----------------------------------------------------------
 
     def test_valid_attributes(self):
@@ -46,7 +45,7 @@ class TestRectangle(TestBase):
         self.assertEqual(rect.y, 5)
         self.assertEqual(rect.id, 67)
 
-    def test_invalid_width(self):
+    def test_invalid_attributs(self):
         """test invalid attributs"""
         with self.assertRaises(ValueError):
             Rectangle(0, 20, 5, 5)
@@ -59,6 +58,28 @@ class TestRectangle(TestBase):
         with self.assertRaises(TypeError):
             Rectangle(3.14, 20, 5, 5)
 
+        with self.assertRaises(ValueError):
+            Rectangle(20, 0, 5, 5)
+        with self.assertRaises(ValueError):
+            Rectangle(20, -20, 5, 5)
+        with self.assertRaises(TypeError):
+            Rectangle(20, 3.14, 5, 5)
+        with self.assertRaises(TypeError):
+            Rectangle(20, "hello", 5, 5)
+        with self.assertRaises(TypeError):
+            Rectangle(20, 3.14, 5, 5)
+
+        with self.assertRaises(ValueError):
+            Rectangle(10, 20, -5, 5)
+        with self.assertRaises(ValueError):
+            Rectangle(10, 20, 5, -5)
+        with self.assertRaises(TypeError):
+            Rectangle(10, 20, "test", 5)
+        with self.assertRaises(TypeError):
+            Rectangle(10, 20, 5, "test")
+
+        with self.assertRaises(TypeError):
+            Rectangle(1, 2, 3, 4, 5, 6)
 
     # AREA ---------------------------------------------------------------
 
@@ -79,6 +100,19 @@ class TestRectangle(TestBase):
         with self.assertRaises(ValueError):
             Rectangle(10, 0, 0, 0)
 
+    def test_area_str(self):
+        """Test str area"""
+        with self.assertRaises(TypeError):
+            Rectangle(10, "test", 0, 0)
+        with self.assertRaises(TypeError):
+            Rectangle("test", 10, 0, 0)
+
+    def test_area_negative(self):
+        """Test negative area"""
+        with self.assertRaises(ValueError):
+            Rectangle(10, -20, 0, 0)
+        with self.assertRaises(ValueError):
+            Rectangle(-20, 10, 0, 0)
 
     # DISPLAY ------------------------------------------------------------
 
@@ -110,7 +144,6 @@ class TestRectangle(TestBase):
         with self.assertRaises(ValueError, msg="width must be > 0"):
             r = Rectangle(0, 0, 0, 0)
 
-
     # STR ----------------------------------------------------------------
 
     def test_str(self):
@@ -121,12 +154,16 @@ class TestRectangle(TestBase):
             print(rect)
             output = buf.getvalue()
             self.assertEqual(output, expected_output)
-        
+
+    def test_str_0(self):
+        """Test print 0 size rectangle representation in stdout"""
+        with self.assertRaises(ValueError, msg="width must be > 0"):
+            Rectangle(0, 0, 0, 0)
+
     def test_str(self):
         """Test print invalid rectangle representation in stdout"""
         with self.assertRaises(TypeError, msg="width must be an integer"):
             Rectangle("test", 5, 0, 0)
-
 
     # UPDATE -------------------------------------------------------------
 
@@ -170,12 +207,12 @@ class TestRectangle(TestBase):
         self.assertEqual(rect.y, 4)
         self.assertEqual(rect.id, 10)
 
-    def test_update_with_partial_kwargs(self):
+    def test_update_with_kwargs_value_0(self):
         """Test update rectangle with TypeError and ValueError"""
         rect = Rectangle(1, 2, 3, 4, 5)
-
         with self.assertRaises(ValueError, msg="width must be > 0"):
             rect.update(width=0)
+
 
 if __name__ == '__main__':
     unittest.main()
