@@ -5,10 +5,10 @@ import unittest
 
 from models.rectangle import Rectangle
 from models.square import Square
-from tests.test_models.test_base import TestBase
+from tests.test_models.test_rectangle import TestRectangle
 
 
-class TestRectangle(TestBase):
+class TestSquare(TestRectangle):
     """ Testing Square class """
 
     # INHERITANCE --------------------------------------------------------
