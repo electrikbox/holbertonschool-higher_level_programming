@@ -89,3 +89,14 @@ class Rectangle(Base):
         else:
             for _ in range(self.__height):
                 print("#" * self.__width)
+
+    def __str__(self):
+        """print representation
+        Returns:
+            str: rectangle representation
+        """
+        name = self.__class__.__name__
+        pos = f"{self.x}/{self.y}"
+        size = f"{self.width}/{self.height}"
+
+        return f"{name} ({self.id}) {pos} - {size}"
