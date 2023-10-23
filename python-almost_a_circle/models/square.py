@@ -21,11 +21,10 @@ class Square(Rectangle):
             id (any, optional): square id. Defaults to None.
         """
         super().__init__(size, size, x, y, id)
-        self.__size = size
 
     @property
     def size(self):
-        return self.__size
+        return self.width
 
     @size.setter
     def size(self, value):
@@ -38,5 +37,5 @@ class Square(Rectangle):
             str: square representation
         """
         return "[{}] ({}) {}/{} - {}".format(
-            self.__class__.__name__, self.id, self.x, self.y, self.size
+            self.__class__.__name__, self.id, self.x, self.y, self.width
             )
