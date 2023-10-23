@@ -95,6 +95,8 @@ class Rectangle(Base):
         Returns:
             str: rectangle representation
         """
-        return "[{}] ({}) {}/{} - {}/{}".format( self.__class__.__name__, \
-            self.id, self.x, self.y, self.__width, self.__height
+        return "[{}] ({}) {}/{} - {}/{}".format(
+            self.__class__.__name__,
+            self.id, self.x, self.y,
+            self.__width, self.__height
             )
