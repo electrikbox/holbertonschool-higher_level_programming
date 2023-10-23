@@ -102,8 +102,9 @@ class Rectangle(Base):
             self.id, self.x, self.y,
             self.__width, self.__height
             )
-    
+
     def update(self, *args):
+        """update rectangle"""
         if args:
             attributs = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
