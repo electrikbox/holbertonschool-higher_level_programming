@@ -73,6 +73,16 @@ class TestRectangle(TestBase):
             output = buf.getvalue()
             self.assertEqual(output, expected_output)
 
+    def test_update_with_args(self):
+        """Test update rectangle"""
+        r = Rectangle(1, 2, 3, 4, 5)
+        r.update(10, 20, 30, 40, 50)
+
+        self.assertEqual(r.id, 10)
+        self.assertEqual(r.width, 20)
+        self.assertEqual(r.height, 30)
+        self.assertEqual(r.x, 40)
+        self.assertEqual(r.y, 50)
 
 if __name__ == '__main__':
     unittest.main()
