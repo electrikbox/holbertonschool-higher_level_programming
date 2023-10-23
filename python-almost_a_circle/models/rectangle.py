@@ -12,6 +12,9 @@ class Rectangle(Base):
     Args:
         Base (Base): Mother class
     """
+
+    # INIT ---------------------------------------------------------------
+    
     def __init__(self, width, height, x=0, y=0, id=None):
         """initialize
         Args:
@@ -26,6 +29,9 @@ class Rectangle(Base):
         self.x = x
         self.y = y
         super().__init__(id)
+
+    
+    # GETTER - SETTER ----------------------------------------------------
 
     @property
     def width(self):
@@ -75,12 +81,18 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = value
 
+
+    # AREA ---------------------------------------------------------------
+
     def area(self):
         """give rectangle area
         Returns:
             int: rectangle area
         """
         return self.width * self.height
+
+
+    # DISPLAY ------------------------------------------------------------
 
     def display(self):
         """print rectangle with # in stdout"""
@@ -91,6 +103,9 @@ class Rectangle(Base):
                 print()
             for _ in range(self.height):
                 print(" " * self.x + "#" * self.width)
+
+
+    # STR ----------------------------------------------------------------
 
     def __str__(self):
         """print representation
@@ -103,10 +118,16 @@ class Rectangle(Base):
             self.__width, self.__height
             )
 
-    def update(self, *args):
+
+    # UPDATE -------------------------------------------------------------
+    
+    def update(self, *args, **kwargs):
         """update rectangle"""
         if args:
             attributs = ["id", "width", "height", "x", "y"]
             for i, arg in enumerate(args):
                 if i < len(attributs):
                     setattr(self, attributs[i], arg)
+        else:
+            for key, value in kwargs.items():
+                setattr(self, key, value)
