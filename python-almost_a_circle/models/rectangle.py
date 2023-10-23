@@ -14,7 +14,7 @@ class Rectangle(Base):
     """
 
     # INIT ---------------------------------------------------------------
-    
+
     def __init__(self, width, height, x=0, y=0, id=None):
         """initialize
         Args:
@@ -30,7 +30,6 @@ class Rectangle(Base):
         self.y = y
         super().__init__(id)
 
-    
     # GETTER - SETTER ----------------------------------------------------
 
     @property
@@ -81,7 +80,6 @@ class Rectangle(Base):
             raise ValueError("y must be >= 0")
         self.__y = value
 
-
     # AREA ---------------------------------------------------------------
 
     def area(self):
@@ -90,7 +88,6 @@ class Rectangle(Base):
             int: rectangle area
         """
         return self.width * self.height
-
 
     # DISPLAY ------------------------------------------------------------
 
@@ -103,7 +100,6 @@ class Rectangle(Base):
                 print()
             for _ in range(self.height):
                 print(" " * self.x + "#" * self.width)
-
 
     # STR ----------------------------------------------------------------
 
@@ -118,9 +114,8 @@ class Rectangle(Base):
             self.__width, self.__height
             )
 
-
     # UPDATE -------------------------------------------------------------
-    
+
     def update(self, *args, **kwargs):
         """update rectangle"""
         if args:
