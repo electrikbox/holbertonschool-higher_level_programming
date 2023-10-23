@@ -8,7 +8,7 @@ from models.base import Base
 
 
 class Rectangle(Base):
-    """rectangle class
+    """Rectanle class
     Args:
         Base (Base): Mother class
     """
@@ -76,4 +76,8 @@ class Rectangle(Base):
         self.__y = value
 
     def area(self):
+        """give rectangle area
+        Returns:
+            int: rectangle area
+        """
         return self.width * self.height
