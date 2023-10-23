@@ -5,6 +5,8 @@ import unittest
 
 from tests.test_models.test_base import TestBase
 from models.rectangle import Rectangle
+from io import StringIO
+from contextlib import redirect_stdout
 
 
 class TestRectangle(TestBase):
@@ -30,21 +32,30 @@ class TestRectangle(TestBase):
             Rectangle("hello", 20, 5, 5)
 
     def test_area(self):
-        """ Testing area """
+        """Test area"""
         rect = Rectangle(10, 20, 5, 5)
         self.assertEqual(rect.area(), 200)
 
     def test_area_large(self):
-        """ Testing large area """
+        """Test large area"""
         rect = Rectangle(1000, 2000, 500, 500)
         self.assertEqual(rect.area(), 2000000)
 
     def test_area_zero(self):
-        """ Testing zero area """
+        """Test zero area"""
         with self.assertRaises(ValueError):
             Rectangle(0, 20, 0, 0)
         with self.assertRaises(ValueError):
             Rectangle(10, 0, 0, 0)
+
+    def test_display(self):
+        """Test displaying a rectangle in stdout"""
+        r = Rectangle(2, 2)
+        expected_output = "##\n##\n"
+        with StringIO() as buf, redirect_stdout(buf):
+            r.display()
+            output = buf.getvalue()
+            self.assertEqual(output, expected_output)
 
 
 if __name__ == '__main__':
