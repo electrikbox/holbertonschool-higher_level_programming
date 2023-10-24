@@ -120,10 +120,9 @@ class Base:
         draw.shape('arrow')
         draw.color('#3b736e')
         draw.width(2)
-
         draw.penup()
         draw.goto(-300, 400)
-        
+
         for rect in list_rectangles:
             Base.setup_draw(draw, rect)
             for _ in range(2):
@@ -141,7 +140,7 @@ class Base:
                 draw.left(90)
             draw.end_fill()
             draw.penup()
-        
+
         draw.goto(-400, 400)
         draw.screen.exitonclick()
 
