@@ -32,6 +32,7 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        """save list to file"""
         if list_objs is None:
             list_objs = []
 
@@ -41,3 +42,10 @@ class Base:
 
         with open(filename, 'w') as file:
             file.write(json_str)
+
+    @staticmethod
+    def from_json_string(json_string):
+        """return list of json"""
+        if not json_string:
+            return []
+        return json.loads(json_string)
