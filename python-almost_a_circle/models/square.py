@@ -12,6 +12,9 @@ class Square(Rectangle):
     Args:
         Rectangle (Rectangle): Mother class
     """
+
+    # INIT ---------------------------------------------------------------
+
     def __init__(self, size, x=0, y=0, id=None):
         """initialize square
         Args:
@@ -31,17 +34,25 @@ class Square(Rectangle):
         self.width = value
         self.height = value
 
+    # STR ----------------------------------------------------------------
+
     def __str__(self):
-        """print representation
+        """Returns a string representation of the square.
         Returns:
-            str: square representation
+            str: A string in the format "[Class Name] (id) x/y - size".
         """
         return "[{}] ({}) {}/{} - {}".format(
             self.__class__.__name__, self.id, self.x, self.y, self.width
             )
 
+    # UPDATE -------------------------------------------------------------
+
     def update(self, *args, **kwargs):
-        """update square"""
+        """Updates attributes of square with either args or keyword args.
+        Args:
+            *args: Variable-length positional arguments for id, size, x, and y.
+            **kwargs: Keyword arguments for id, size, x, and y.
+        """
         if args:
             attributs = ["id", "size", "x", "y"]
             for i, arg in enumerate(args):
@@ -51,8 +62,13 @@ class Square(Rectangle):
             for key, value in kwargs.items():
                 setattr(self, key, value)
 
+    # TO DICT ------------------------------------------------------------
+
     def to_dictionary(self):
-        """Returns a dictionary representation of a Square instance."""
+        """Returns a dictionary representation of a Square instance.
+        Returns:
+            dict: A dictionary containing the id, size, x, and y of the square.
+        """
         return {
             'id': self.id,
             'size': self.width,
