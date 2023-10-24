@@ -6,6 +6,7 @@ rectangle and square classes
 
 import json
 import os
+import turtle
 
 
 class Base:
@@ -104,3 +105,49 @@ class Base:
             new = cls(10)
         new.update(**dictionary)
         return new
+
+    # DRAW ---------------------------------------------------------------
+
+    @staticmethod
+    def draw(list_rectangles, list_squares):
+        """Draws all the Rectangles and Squares.
+        Args:
+            list_rectangles (list): a list of rectangle.
+            list_squares (list): a list of square.
+        """
+        draw = turtle.Turtle()
+        draw.screen.bgcolor('#93dad3')
+        draw.shape('arrow')
+        draw.color('#3b736e')
+        draw.width(2)
+
+        draw.penup()
+        draw.goto(-300, 400)
+        
+        for rect in list_rectangles:
+            Base.setup_draw(draw, rect)
+            for _ in range(2):
+                draw.forward(rect.width)
+                draw.left(90)
+                draw.forward(rect.height)
+                draw.left(90)
+            draw.end_fill()
+            draw.penup()
+
+        for square in list_squares:
+            Base.setup_draw(draw, square)
+            for _ in range(4):
+                draw.forward(square.width)
+                draw.left(90)
+            draw.end_fill()
+            draw.penup()
+        
+        draw.goto(-400, 400)
+        draw.screen.exitonclick()
+
+    @staticmethod
+    def setup_draw(instance, obj):
+        instance.goto(instance.xcor(), instance.ycor() - (obj.height + 10))
+        instance.penup()
+        instance.pendown()
+        instance.begin_fill()
