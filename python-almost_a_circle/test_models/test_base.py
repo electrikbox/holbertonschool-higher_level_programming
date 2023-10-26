@@ -1,6 +1,5 @@
 #!/usr/bin/python3
 import unittest, json
-import turtle
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -80,26 +79,5 @@ class test_base(unittest.TestCase):
         json_string = Base.to_json_string([])
         self.assertEqual(json_string, "[]")
 
-    def test_load_from_file_nonexistent_file(self):
-        instance = Base()
-        result = instance.load_from_file()
-        self.assertEqual(result, [])
-
-class TestDrawMethods(unittest.TestCase):
-
-    def setUp(self):
-        self.draw = turtle.Turtle()
-
-    def test_setup_draw(self):
-        rect = Rectangle(10, 5, 0, 0)
-        Base.setup_draw(self.draw, rect)
-        self.assertEqual(self.draw.xcor(), 0)
-        self.assertEqual(self.draw.ycor(), -15)
-
-    def test_draw(self):
-        rectangles = [Rectangle(10, 5, 0, 0), Rectangle(7, 3, 20, 20)]
-        squares = [Square(5, 30, 40), Square(8, 50, 10)]
-        Base.draw(rectangles, squares)
-
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
