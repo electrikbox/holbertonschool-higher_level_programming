@@ -84,5 +84,11 @@ class test_base(unittest.TestCase):
         result = instance.load_from_file()
         self.assertEqual(result, [])
 
+    def test_from_json_string_empty_string(self):
+        instance = Base()
+        json_string = ''
+        result = instance.from_json_string(json_string)
+        self.assertEqual(result, [])
+
     if __name__ == '__main__':
         unittest.main()
