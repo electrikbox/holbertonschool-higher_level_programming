@@ -393,30 +393,5 @@ class test_rectangle(unittest.TestCase):
         output = "###\n###\n###\n###\n###\n###\n###\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
-    # def test_display_with_non_zero_height_and_width(self):
-    #     rect = Base(5, 5, 2, 2)
-    #     expected_output = "  #####\n  #####\n  #####\n  #####\n  #####\n"
-    #     with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
-    #         rect.display()
-    #         self.assertEqual(mock_stdout.getvalue(), expected_output)
-
-    # def test_display_with_zero_height_or_width(self):
-    #     rect = Base(0, 5, 2, 2)
-    #     with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
-    #         rect.display()
-    #         self.assertEqual(mock_stdout.getvalue(), '')
-
-    # def test_display_partial_zero_height_or_width(self):
-    #     rect = Base(5, 0, 2, 2)
-    #     with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
-    #         rect.display()
-    #         self.assertEqual(mock_stdout.getvalue(), '')
-
-    # def test_display_partial_non_zero_height(self):
-    #     rect = Base(5, 5, 2, 0)
-    #     with patch('sys.stdout', new_callable=io.StringIO) as mock_stdout:
-    #         rect.display()
-    #         self.assertEqual(mock_stdout.getvalue(), '\n')
-
 if __name__ == '__main__':
     unittest.main()
