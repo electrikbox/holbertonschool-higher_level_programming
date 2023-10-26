@@ -1,10 +1,6 @@
 #!/usr/bin/python3
-import unittest
-import os
-import json
-import sys
-from models.rectangle import Rectangle
-from models.base import Base
+import unittest, os, json, sys
+from models.rectangle import Rectangle, Base
 from io import StringIO
 """Runs test cases for the Rectangle module"""
 
@@ -217,9 +213,8 @@ class test_rectangle(unittest.TestCase):
         """Testing the dict that will be printed"""
         r1 = Rectangle(5, 4, 0, 0, 400)
         r1_dict = r1.to_dictionary()
-        self.assertEqual(
-            r1_dict, {"width": 5, "height": 4, "x": 0, "y": 0, "id": 400}
-            )
+        self.assertEqual(r1_dict,
+        {"width": 5, "height": 4, "x": 0, "y": 0, "id": 400})
 
     def test_missing_height(self):
         """Expecting a type error because height and width are missing"""
@@ -241,7 +236,7 @@ class test_rectangle(unittest.TestCase):
         """Testing saving a file into json format"""
         try:
             os.remove("Rectangle.json")
-        except Exception:
+        except:
             pass
         r1 = Rectangle(5, 10, 0, 0, 346)
         Rectangle.save_to_file([r1])
@@ -259,7 +254,7 @@ class test_rectangle(unittest.TestCase):
         """Testing saving a file into json format sending None"""
         try:
             os.remove("Rectangle.json")
-        except Exception:
+        except:
             pass
         r1 = Rectangle(5, 10, 0, 0, 346)
         Rectangle.save_to_file(None)
@@ -271,7 +266,7 @@ class test_rectangle(unittest.TestCase):
         """Testing saving a file into json format sending None"""
         try:
             os.remove("Rectangle.json")
-        except Exception:
+        except:
             pass
         r1 = Rectangle(5, 10, 0, 0, 346)
         Rectangle.save_to_file(None)
@@ -280,7 +275,7 @@ class test_rectangle(unittest.TestCase):
         self.assertEqual(str, type(content))
         try:
             os.remove("Rectangle.json")
-        except Exception:
+        except:
             pass
 
     def test_json_string_type(self):
@@ -369,10 +364,10 @@ class test_rectangle(unittest.TestCase):
         """Checking the stdout output by capturing it"""
         capturedOutput = StringIO()
         sys.stdout = capturedOutput
-        r1 = Rectangle(5, 4)
+        r1 = Rectangle(10, 4)
         r1.display()
         sys.stdout = sys.__stdout__
-        output = "#####\n" + "#####\n" + "#####\n" + "#####\n"
+        output = "##########\n" + "##########\n" + "##########\n" + "##########\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
     def test_display_square_size_one(self):
