@@ -84,5 +84,5 @@ class test_base(unittest.TestCase):
         result = instance.load_from_file()
         self.assertEqual(result, [])
 
-if __name__ == '__main__':
-    unittest.main()
+    if __name__ == '__main__':
+        unittest.main()
