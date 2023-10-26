@@ -391,5 +391,14 @@ class test_rectangle(unittest.TestCase):
         output = "###\n###\n###\n###\n###\n###\n###\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
+    def test_display(self):
+        capturedOutput = StringIO()
+        sys.stdout = capturedOutput
+        r = Rectangle(5, 3, 2, 1)
+        r.display()
+        sys.stdout = sys.__stdout__
+        expected_output = "\n  #####\n  #####\n  #####\n"
+        self.assertEqual(capturedOutput.getvalue(), expected_output)
+
     if __name__ == '__main__':
         unittest.main()
