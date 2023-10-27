@@ -410,5 +410,12 @@ class test_square(unittest.TestCase):
         output = "###\n###\n###\n"
         self.assertEqual(capturedOutput.getvalue(), output)
 
+    def test_square_save_to_file_empty_list(self):
+        """Testing save_to_file with an empty list of Square instances"""
+        Square.save_to_file([])
+        with open("Square.json", "r") as file:
+            content = file.read()
+            self.assertEqual(content, "[]")
+
 if __name__ == '__main__':
     unittest.main()
